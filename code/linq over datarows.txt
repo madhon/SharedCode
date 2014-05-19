@@ -1,0 +1,46 @@
+
+	using System;
+	using System.Linq;
+	using System.Collections;
+	using System.Collections.Generic;
+    internal class LinqList<T>: IEnumerable<T>, IEnumerable
+    {
+        IEnumerable items;
+
+        internal LinqList(IEnumerable items)
+        {
+            this.items = items;
+        }
+
+        #region IEnumerable<DataRow> Members
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            foreach (T item in items)
+                yield return item;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            IEnumerable<T> ie = this;
+            return ie.GetEnumerator();
+        } 
+        #endregion
+    }
+
+The code is pretty straightforward, isn't it. And here is a simple test:
+
+  // create and fill table
+  DataTable table = new DataTable();
+  table.Columns.Add("Id", typeof(int));
+  table.Rows.Add(new object[]{1});
+  table.Rows.Add(new object[]{2});
+  table.Rows.Add(new object[]{3});
+  // create a wrapper around Rows
+  LinqList<DataRow> rows = new LinqList<DataRow>(table.Rows);
+  // do a simple select
+  IEnumerable<DataRow> selectedRows = from r in rows
+         where (int)r["Id"] == 2
+         select r;
+  // output result
+  foreach (DataRow row in selectedRows)
+   Console.WriteLine(row["Id"]);

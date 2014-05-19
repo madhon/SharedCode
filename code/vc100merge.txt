@@ -1,0 +1,13 @@
+     <Merge Id="CRT100" Language="0" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC100_CRT_x86.msm" DiskId="1" />
+      <Merge Id="ATL100" Language="0" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC100_ATL_x86.msm" DiskId="1" />
+      <Merge Id="MFC100" Language="0" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC100_MFC_x86.msm" DiskId="1" />
+      <Merge Id="MFCLOC100" Language="0" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC100_MFCLOC_x86.msm" DiskId="1" />
+      <Merge Id="OPENMP100" Language="0" SourceFile="C:\Program Files (x86)\Common Files\Merge Modules\Microsoft_VC100_OpenMP_x86.msm" DiskId="1" />
+
+	  
+	  
+	  <MergeRef Id="CRT100" />
+      <MergeRef Id="ATL100" />
+      <MergeRef Id="MFC100" />
+      <MergeRef Id="MFCLOC100" />
+      <MergeRef Id="OPENMP100" />

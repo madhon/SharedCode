@@ -1,0 +1,25 @@
+ServicePointManager.ServerCertificateValidationCallback = ((sender, certificate, chain,
+sslPolicyErrors) => true);
+
+
+
+or
+
+ServicePointManager.CertificatePolicy = new AcceptAllCertificatePolicy();
+
+internal class AcceptAllCertificatePolicy : ICertificatePolicy
+    {
+        public AcceptAllCertificatePolicy()
+        {
+        }
+ 
+        public bool CheckValidationResult(ServicePoint sPoint,
+           X509Certificate cert, WebRequest wRequest, int certProb)
+        {
+            // *** Always accept
+            return true;
+        }
+    }
+	
+	
+	
