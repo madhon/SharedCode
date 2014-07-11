@@ -9,13 +9,32 @@ namespace System
 
         public WaitCursor()
         {
-            cursor = Cursor.Current;
-            Cursor.Current = Cursors.WaitCursor;
+            IsWaitCursor = true;
         }
 
         public void Dispose()
         {
-            Cursor.Current = cursor;
+            IsWaitCursor = false;
+        }
+        
+        public bool IsWaitCursor
+        {
+            get { return Application.UseWaitCursor; }
+            set
+            {
+                if (Application.UseWaitCursor ! = value)
+                {
+                        Application.UseWaitCursor = value;
+                        if (value)
+                        {
+                            Cursor.Current = Cursors.WaitCursor;
+                        }
+                        else
+                        {
+                            Cursor.Current = Cursors.Default;
+                        }
+                }
+            }
         }
     }
 }
