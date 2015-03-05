@@ -1,0 +1,16 @@
+﻿<system.diagnostics>
+  <sharedListeners>
+    <add name="Diagnostics"
+         type="AIMIE.Logging.LibLogTraceListener, AIMIE.Logging"
+         initializeData="DefaultTraceEventType=Information; LoggerNameFormat={listenerName}.{sourceName}">
+      <filter type="System.Diagnostics.EventTypeFilter" initializeData="Information"/>
+    </add>
+  </sharedListeners>
+
+  <trace>
+    <listeners>
+      <add name="Diagnostics" />
+    </listeners>
+  </trace>
+
+</system.diagnostics>
